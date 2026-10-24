@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Tasks</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-api="{{ url_for('api.list_tasks') }}" data-stream="{{ url_for('api.stream') }}">
+  <main>
+    <h1>Live Tasks <span id="conn" class="pill off">offline</span></h1>
+    <p class="hint">Open this page in two tabs: changes in one appear in the other instantly (Server-Sent Events).</p>
+
+    <form id="add-form">
+      <input id="title" name="title" maxlength="200" placeholder="What needs doing?" required autocomplete="off">
+      <button type="submit">Add</button>
+    </form>
+    <p id="error" class="error" hidden></p>
+
+    <ul id="tasks"></ul>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
